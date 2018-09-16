@@ -12,7 +12,9 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./main.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
+"./bibliotecas/eeprom.obj" \
 "./bibliotecas/gpioUtils.obj" \
+"./bibliotecas/pwm.obj" \
 "./bibliotecas/utilitarioTiva.obj" \
 "../tm4c123gh6pm.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -159,8 +161,8 @@ Projeto\ 3.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "bibliotecas\gpioUtils.obj" "bibliotecas\utilitarioTiva.obj" 
-	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "bibliotecas\gpioUtils.d" "bibliotecas\utilitarioTiva.d" 
+	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "bibliotecas\eeprom.obj" "bibliotecas\gpioUtils.obj" "bibliotecas\pwm.obj" "bibliotecas\utilitarioTiva.obj" 
+	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "bibliotecas\eeprom.d" "bibliotecas\gpioUtils.d" "bibliotecas\pwm.d" "bibliotecas\utilitarioTiva.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
