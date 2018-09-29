@@ -40,10 +40,12 @@ void inverterBit(volatile uint32_t *registrador, int bit);
 void configurarPino(volatile uint32_t *portDir, volatile uint32_t *portDen, int pino, int valor);
 void configurarInterrupcao(volatile uint32_t *IS, volatile uint32_t *IEV, volatile uint32_t *IBE, volatile uint32_t *IM, int pino, int sensibilidade, int subidaDescida, int port);
 void habilitarADCPorts(volatile uint32_t *AFSEL , volatile uint32_t *AMSEL ,int pino);
+void setarFuncaoAlternativa(volatile uint32_t *AFSEL , int pino);
 void configurarADC0(uint32_t EMUX, uint32_t SSMUX, uint32_t SSCTL, uint32_t SS, uint32_t ctrl,  int fila);
 void configurarFilaADC0(uint32_t SSMUX, uint32_t SSCTL, int fila);
 void configurarADC1(uint32_t EMUX, uint32_t SSMUX, uint32_t SSCTL, uint32_t SS, uint32_t ctrl,  int fila);
 void configurarFilaADC1(uint32_t SSMUX, uint32_t SSCTL, int fila);
 void configurarUART0(uint32_t RCGcUART,volatile uint32_t *AFSEL,volatile uint32_t *PCTL, int IBDR, int FBRD, uint32_t LCRH, uint32_t CC, uint32_t CTL);
 void escreverUART0(unsigned char data);
+void habilitarPWMPorts(volatile uint32_t *AFSEL , volatile uint32_t *PCTL, int pino, int pctlnum);
 #endif /* BIBLIOTECAS_GPIOUTILS_H_ */

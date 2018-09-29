@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker PC v18.1.2                     
 ******************************************************************************
->> Linked Tue Sep 18 23:54:47 2018
+>> Linked Sat Sep 29 15:07:11 2018
 
 OUTPUT FILE NAME:   <Projeto 3.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000859
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000f65
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  000008ca  0003f736  R  X
+  FLASH                 00000000   00040000  00000fd6  0003f02a  R  X
   SRAM                  20000000   00008000  00000208  00007df8  RW X
 
 
@@ -19,10 +19,10 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    000008d0   000008d0    r-x
+00000000    00000000    00000fd8   00000fd8    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00000646   00000646    r-x .text
-  000008b8    000008b8    00000018   00000018    r-- .cinit
+  0000026c    0000026c    00000d52   00000d52    r-x .text
+  00000fc0    00000fc0    00000018   00000018    r-- .cinit
 20000000    20000000    00000208   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
   20000200    20000200    00000008   00000000    rw- .data
@@ -36,24 +36,25 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    00000646     
-                  0000026c    00000354     gpioUtils.obj (.text)
-                  000005c0    000000d0     main.obj (.text)
-                  00000690    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
-                  0000072c    00000080     utilitarioTiva.obj (.text)
-                  000007ac    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  00000814    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  00000858    00000038                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
-                  00000890    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  0000089e    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  000008aa    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  000008ae    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    0000026c    00000d52     
+                  0000026c    00000514     pwm.obj (.text)
+                  00000780    00000378     gpioUtils.obj (.text)
+                  00000af8    000002a4     main.obj (.text)
+                  00000d9c    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000e38    00000080     utilitarioTiva.obj (.text)
+                  00000eb8    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00000f20    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00000f64    00000038                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000f9c    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00000faa    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000fb6    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000fba    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.cinit     0    000008b8    00000018     
-                  000008b8    00000008     (__TI_handler_table)
-                  000008c0    00000007     (.cinit..data.load) [load image, compression = lzss]
-                  000008c7    00000001     --HOLE-- [fill = 0]
-                  000008c8    00000008     (__TI_cinit_table)
+.cinit     0    00000fc0    00000018     
+                  00000fc0    00000008     (__TI_handler_table)
+                  00000fc8    00000007     (.cinit..data.load) [load image, compression = lzss]
+                  00000fcf    00000001     --HOLE-- [fill = 0]
+                  00000fd0    00000008     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -70,16 +71,17 @@ MODULE SUMMARY
        Module                         code   ro data   rw data
        ------                         ----   -------   -------
     .\
+       main.obj                       676    0         0      
        tm4c123gh6pm_startup_ccs.obj   12     620       0      
-       main.obj                       208    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         220    620       0      
+       Total:                         688    620       0      
                                                               
     .\bibliotecas\
-       gpioUtils.obj                  852    0         0      
+       pwm.obj                        1300   0         0      
+       gpioUtils.obj                  888    0         0      
        utilitarioTiva.obj             128    0         8      
     +--+------------------------------+------+---------+---------+
-       Total:                         980    0         8      
+       Total:                         2316   0         8      
                                                               
     C:\ti\ccsv8\tools\compiler\ti-cgt-arm_18.1.2.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        memcpy_t2.asm.obj              156    0         0      
@@ -95,18 +97,18 @@ MODULE SUMMARY
        Stack:                         0      0         512    
        Linker Generated:              0      23        0      
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   1606   643       520    
+       Grand Total:                   3410   643       520    
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000008c8 records: 1, size/record: 8, table size: 8
-	.data: load addr=000008c0, load size=00000007 bytes, run addr=20000200, run size=00000008 bytes, compression=lzss
+__TI_cinit_table @ 00000fd0 records: 1, size/record: 8, table size: 8
+	.data: load addr=00000fc8, load size=00000007 bytes, run addr=20000200, run size=00000008 bytes, compression=lzss
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 000008b8 records: 2, size/record: 4, table size: 8
+__TI_handler_table @ 00000fc0 records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 
@@ -115,65 +117,75 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                          
 -------   ----                          
-000008af  C$$EXIT                       
-0000089f  ResetISR                      
+00000fbb  C$$EXIT                       
+00000fab  ResetISR                      
 20000200  __STACK_END                   
 00000200  __STACK_SIZE                  
 20000200  __STACK_TOP                   
-000008c8  __TI_CINIT_Base               
-000008d0  __TI_CINIT_Limit              
-000008b8  __TI_Handler_Table_Base       
-000008c0  __TI_Handler_Table_Limit      
-00000815  __TI_auto_init_nobinit_nopinit
-000007ad  __TI_decompress_lzss          
-00000891  __TI_decompress_none          
+00000fd0  __TI_CINIT_Base               
+00000fd8  __TI_CINIT_Limit              
+00000fc0  __TI_Handler_Table_Base       
+00000fc8  __TI_Handler_Table_Limit      
+00000f21  __TI_auto_init_nobinit_nopinit
+00000eb9  __TI_decompress_lzss          
+00000f9d  __TI_decompress_none          
 ffffffff  __TI_pprof_out_hndl           
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
 00000000  __TI_static_base__            
-00000691  __aeabi_memcpy                
-00000691  __aeabi_memcpy4               
-00000691  __aeabi_memcpy8               
+00000d9d  __aeabi_memcpy                
+00000d9d  __aeabi_memcpy4               
+00000d9d  __aeabi_memcpy8               
 ffffffff  __binit__                     
 ffffffff  __c_args__                    
 UNDEFED   __mpu_init                    
 20000000  __stack                       
-00000859  _c_int00_noargs               
+00000f65  _c_int00_noargs               
 UNDEFED   _system_post_cinit            
-000008ab  _system_pre_init              
-000008af  abort                         
-0000030d  ativarADC                     
-000002f5  ativarRCGC                    
+00000fb7  _system_pre_init              
+00000fbb  abort                         
+00000821  ativarADC                     
+0000026d  ativarModulo                  
+00000809  ativarRCGC                    
 ffffffff  binit                         
-0000038f  configurarADC0                
-0000041f  configurarADC1                
-000003c3  configurarFilaADC0            
-00000453  configurarFilaADC1            
-00000325  configurarInterrupcao         
-000002cf  configurarPino                
-0000072d  configurarSysTick             
-000004af  configurarUART0               
-00000745  delay                         
-00000517  escreverUART0                 
+000008a3  configurarADC0                
+00000933  configurarADC1                
+000008d7  configurarFilaADC0            
+00000967  configurarFilaADC1            
+00000839  configurarInterrupcao         
+00000289  configurarPWM                 
+000007e3  configurarPino                
+00000e39  configurarSysTick             
+000009c3  configurarUART0               
+00000e51  delay                         
+00000a2b  escreverUART0                 
 00000000  g_pfnVectors                  
-00000797  getMicro                      
-00000791  getMillis                     
-00000371  habilitarADCPorts             
-0000029d  inverterBit                   
-000002b7  lerBit                        
-0000065b  main                          
-00000691  memcpy                        
+00000ea3  getMicro                      
+00000e9d  getMillis                     
+00000885  habilitarADCPorts             
+00000a47  habilitarPWMPorts             
+000006f5  iniciaPwm                     
+000007b1  inverterBit                   
+000007cb  lerBit                        
+00000cd1  main                          
+00000d9d  memcpy                        
 20000200  microsAtual                   
 20000204  millisAtual                   
-0000026d  setarBit                      
-000005c1  setup                         
-00000663  trataPortA                    
-00000665  trataPortB                    
-00000667  trataPortC                    
-00000669  trataPortD                    
-0000066b  trataPortE                    
-0000066d  trataPortF                    
-00000763  trataST                       
+00000465  setCmpa                       
+00000571  setCmpb                       
+00000671  setControle                   
+000002e1  setGeneratorA                 
+00000361  setGeneratorB                 
+000003e1  setLoad                       
+00000781  setarBit                      
+00000af9  setup                         
+00000cd9  trataPortA                    
+00000ce1  trataPortB                    
+00000cf9  trataPortC                    
+00000d3d  trataPortD                    
+00000d45  trataPortE                    
+00000d4d  trataPortF                    
+00000e6f  trataST                       
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -183,49 +195,59 @@ address   name
 00000000  __TI_static_base__            
 00000000  g_pfnVectors                  
 00000200  __STACK_SIZE                  
-0000026d  setarBit                      
-0000029d  inverterBit                   
-000002b7  lerBit                        
-000002cf  configurarPino                
-000002f5  ativarRCGC                    
-0000030d  ativarADC                     
-00000325  configurarInterrupcao         
-00000371  habilitarADCPorts             
-0000038f  configurarADC0                
-000003c3  configurarFilaADC0            
-0000041f  configurarADC1                
-00000453  configurarFilaADC1            
-000004af  configurarUART0               
-00000517  escreverUART0                 
-000005c1  setup                         
-0000065b  main                          
-00000663  trataPortA                    
-00000665  trataPortB                    
-00000667  trataPortC                    
-00000669  trataPortD                    
-0000066b  trataPortE                    
-0000066d  trataPortF                    
-00000691  __aeabi_memcpy                
-00000691  __aeabi_memcpy4               
-00000691  __aeabi_memcpy8               
-00000691  memcpy                        
-0000072d  configurarSysTick             
-00000745  delay                         
-00000763  trataST                       
-00000791  getMillis                     
-00000797  getMicro                      
-000007ad  __TI_decompress_lzss          
-00000815  __TI_auto_init_nobinit_nopinit
-00000859  _c_int00_noargs               
-00000891  __TI_decompress_none          
-0000089f  ResetISR                      
-000008ab  _system_pre_init              
-000008af  C$$EXIT                       
-000008af  abort                         
-000008b8  __TI_Handler_Table_Base       
-000008c0  __TI_Handler_Table_Limit      
-000008c8  __TI_CINIT_Base               
-000008d0  __TI_CINIT_Limit              
+0000026d  ativarModulo                  
+00000289  configurarPWM                 
+000002e1  setGeneratorA                 
+00000361  setGeneratorB                 
+000003e1  setLoad                       
+00000465  setCmpa                       
+00000571  setCmpb                       
+00000671  setControle                   
+000006f5  iniciaPwm                     
+00000781  setarBit                      
+000007b1  inverterBit                   
+000007cb  lerBit                        
+000007e3  configurarPino                
+00000809  ativarRCGC                    
+00000821  ativarADC                     
+00000839  configurarInterrupcao         
+00000885  habilitarADCPorts             
+000008a3  configurarADC0                
+000008d7  configurarFilaADC0            
+00000933  configurarADC1                
+00000967  configurarFilaADC1            
+000009c3  configurarUART0               
+00000a2b  escreverUART0                 
+00000a47  habilitarPWMPorts             
+00000af9  setup                         
+00000cd1  main                          
+00000cd9  trataPortA                    
+00000ce1  trataPortB                    
+00000cf9  trataPortC                    
+00000d3d  trataPortD                    
+00000d45  trataPortE                    
+00000d4d  trataPortF                    
+00000d9d  __aeabi_memcpy                
+00000d9d  __aeabi_memcpy4               
+00000d9d  __aeabi_memcpy8               
+00000d9d  memcpy                        
+00000e39  configurarSysTick             
+00000e51  delay                         
+00000e6f  trataST                       
+00000e9d  getMillis                     
+00000ea3  getMicro                      
+00000eb9  __TI_decompress_lzss          
+00000f21  __TI_auto_init_nobinit_nopinit
+00000f65  _c_int00_noargs               
+00000f9d  __TI_decompress_none          
+00000fab  ResetISR                      
+00000fb7  _system_pre_init              
+00000fbb  C$$EXIT                       
+00000fbb  abort                         
+00000fc0  __TI_Handler_Table_Base       
+00000fc8  __TI_Handler_Table_Limit      
+00000fd0  __TI_CINIT_Base               
+00000fd8  __TI_CINIT_Limit              
 20000000  __stack                       
 20000200  __STACK_END                   
 20000200  __STACK_TOP                   
@@ -240,4 +262,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                    
 UNDEFED   _system_post_cinit            
 
-[59 symbols]
+[69 symbols]

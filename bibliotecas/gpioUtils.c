@@ -60,10 +60,10 @@ void configurarInterrupcao(volatile uint32_t *IS, volatile uint32_t *IEV,
 void habilitarADCPorts(volatile uint32_t *AFSEL, volatile uint32_t *AMSEL,
                        int pino)
 {
-
     setarBit(AFSEL, pino, 1); //Função Alternativa
     setarBit(AMSEL, pino, 1); //Modo Analogico
 }
+
 
 void configurarADC0(uint32_t EMUX, uint32_t SSMUX, uint32_t SSCTL, uint32_t SS,
                     uint32_t ctrl, int fila)
@@ -157,4 +157,11 @@ void escreverUART0(unsigned char data)
     {
     }
     UART0_DR_R = data;
+}
+
+void habilitarPWMPorts(volatile uint32_t *AFSEL, volatile uint32_t *PCTL,
+                       int pino, int pctlnum)
+{
+    setarBit(AFSEL, pino, 1);
+    setarBit(PCTL, pctlnum, 1); //Modo PWM
 }

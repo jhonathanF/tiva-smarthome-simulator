@@ -18,13 +18,34 @@ void ativarModulo(int module)
     }
 }
 
-void setGenerator(int pwmModule, int element, uint32_t mode)
+void configurarPWM(int cmp, int pwmModule, int element, uint32_t mode,
+                   uint32_t frequencia, uint32_t porcentagem, uint32_t ctl )
+{
+
+
+    if (cmp == 0)
+    {
+        setGeneratorA(pwmModule, element, mode);
+        setLoad(pwmModule, element, frequencia);
+        setCmpa(pwmModule, element, frequencia, porcentagem);
+    }
+    else
+    {
+        setGeneratorB(pwmModule, element, mode);
+        setLoad(pwmModule, element, frequencia);
+        setCmpb(pwmModule, element, frequencia, porcentagem);
+    }
+
+}
+
+void setGeneratorA(int pwmModule, int element, uint32_t mode)
 {
     if (pwmModule == PWM_MODULO_A)
     {
         if (element == PWM_ELEMENT_0)
         {
             PWM0_0_GENA_R = mode;
+
         }
         else if (element == PWM_ELEMENT_1)
         {
@@ -57,6 +78,49 @@ void setGenerator(int pwmModule, int element, uint32_t mode)
         else if (element == PWM_ELEMENT_3)
         {
             PWM1_3_GENA_R = mode;
+        }
+    }
+}
+void setGeneratorB(int pwmModule, int element, uint32_t mode)
+{
+    if (pwmModule == PWM_MODULO_A)
+    {
+        if (element == PWM_ELEMENT_0)
+        {
+            PWM0_0_GENB_R = mode;
+
+        }
+        else if (element == PWM_ELEMENT_1)
+        {
+            PWM0_1_GENB_R = mode;
+        }
+        else if (element == PWM_ELEMENT_2)
+        {
+            PWM0_2_GENB_R = mode;
+        }
+        else if (element == PWM_ELEMENT_3)
+        {
+            PWM0_3_GENB_R = mode;
+        }
+
+    }
+    else if (pwmModule == PWM_MODULO_B)
+    {
+        if (element == PWM_ELEMENT_0)
+        {
+            PWM1_0_GENB_R = mode;
+        }
+        else if (element == PWM_ELEMENT_1)
+        {
+            PWM1_1_GENB_R = mode;
+        }
+        else if (element == PWM_ELEMENT_2)
+        {
+            PWM1_2_GENB_R = mode;
+        }
+        else if (element == PWM_ELEMENT_3)
+        {
+            PWM1_3_GENB_R = mode;
         }
     }
 }
@@ -146,6 +210,48 @@ void setCmpa(int pwmModule, int element, uint32_t frequencia,
     }
 }
 
+void setCmpb(int pwmModule, int element, uint32_t frequencia,
+             uint32_t porcentagem)
+{
+    if (pwmModule == PWM_MODULO_A)
+    {
+        if (element == PWM_ELEMENT_0)
+        {
+            PWM0_0_CMPB_R = (frequencia * porcentagem) / 100;
+        }
+        else if (element == PWM_ELEMENT_1)
+        {
+            PWM0_1_CMPB_R = (frequencia * porcentagem) / 100;
+        }
+        else if (element == PWM_ELEMENT_2)
+        {
+            PWM0_2_CMPB_R = (frequencia * porcentagem) / 100;
+        }
+        else if (element == PWM_ELEMENT_3)
+        {
+            PWM0_3_CMPB_R = (frequencia * porcentagem) / 100;
+        }
+    }
+    else if (pwmModule == PWM_MODULO_B)
+    {
+        if (element == PWM_ELEMENT_0)
+        {
+            PWM1_0_CMPB_R = (frequencia * porcentagem) / 100;
+        }
+        else if (element == PWM_ELEMENT_1)
+        {
+            PWM1_1_CMPB_R = (frequencia * porcentagem) / 100;
+        }
+        else if (element == PWM_ELEMENT_2)
+        {
+            PWM1_2_CMPB_R = (frequencia * porcentagem) / 100;
+        }
+        else if (element == PWM_ELEMENT_3)
+        {
+            PWM1_3_CMPB_R = (frequencia * porcentagem) / 100;
+        }
+    }
+}
 void setControle(int pwmModule, int element, uint32_t ctl)
 {
 
