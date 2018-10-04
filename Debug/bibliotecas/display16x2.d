@@ -12,6 +12,7 @@ bibliotecas/display16x2.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/in
 bibliotecas/display16x2.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/_stdint.h
 bibliotecas/display16x2.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/_stdint.h
 bibliotecas/display16x2.obj: ../bibliotecas/utilitarioTiva.h
+bibliotecas/display16x2.obj: ../bibliotecas/gpioUtils.h
 
 ../bibliotecas/display16x2.c: 
 ../bibliotecas/display16x2.h: 
@@ -25,3 +26,4 @@ C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/_types.h:
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/_stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/_stdint.h: 
 ../bibliotecas/utilitarioTiva.h: 
+../bibliotecas/gpioUtils.h: 

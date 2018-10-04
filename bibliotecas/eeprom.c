@@ -34,6 +34,7 @@ int startEeprom()
 
 uint32_t EEPROM_read(uint8_t block, uint8_t offset){
     while(((EEPROM_EEDONE_R&0x20)==0x20) || ((EEPROM_EEDONE_R&0x08)==0x08) || ((EEPROM_EEDONE_R&0x04)==0x04)){}
+    while (EEPROM_EEDONE_R != 0){}
     EEPROM_EEBLOCK_R = (uint8_t)(1<<block);
     EEPROM_EEOFFSET_R = (uint8_t)offset;
     return (uint32_t)EEPROM_EERDWR_R;
@@ -41,6 +42,7 @@ uint32_t EEPROM_read(uint8_t block, uint8_t offset){
 
 void EEPROM_write(uint8_t block, uint8_t offset, uint32_t word) {
     while(((EEPROM_EEDONE_R&0x20)==0x20) || ((EEPROM_EEDONE_R&0x08)==0x08) || ((EEPROM_EEDONE_R&0x04)==0x04)){}
+    while (EEPROM_EEDONE_R != 0){}
     EEPROM_EEBLOCK_R =  (uint8_t)(1<<block);
     EEPROM_EEOFFSET_R = (uint8_t)offset;
     EEPROM_EERDWR_R = (uint32_t)word;

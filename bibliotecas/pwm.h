@@ -12,7 +12,7 @@
 
 //---Sessão dos Defines---//
 #define PWM_MODULO_A 0
-#define PWM_MODULO_B 0
+#define PWM_MODULO_B 1
 #define PWM_ELEMENT_0 0
 #define PWM_ELEMENT_1 1
 #define PWM_ELEMENT_2 2

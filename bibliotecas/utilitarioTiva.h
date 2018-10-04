@@ -18,5 +18,6 @@ void delay(uint32_t millis);
 void trataST();
 uint32_t getMillis();
 uint32_t getMicro();
+void itoa(uint32_t value, char* result, int base);
 
 #endif /* BIBLIOTECAS_UTILITARIOTIVA_H_ */
