@@ -160,15 +160,16 @@ void menuTres(int porcentagem)
     char texto[64];
     if (porcentagem < 10)
     {
-        strcpy(texto, "PWM(0-100)                     ");
+        strcpy(texto, "PWM(0-100)                    ");
     }
     else
     {
-        strcpy(texto, "PWM(0-100)                    ");
+        strcpy(texto, "PWM(0-100)                   ");
     }
 
     itoa(porcentagem, numero, 10);
     strcat(texto, numero);
+    strcat(texto, "%");
     limpaDisplay();
     escreve_LCD(texto);
 }

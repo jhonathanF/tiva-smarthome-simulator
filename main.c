@@ -262,54 +262,43 @@ int main(void)
 }
 void populaStructEeprom()
 {
-    int i = 0;
-    for (i = 0; i < 4; i++)
-    {
-        if (i == 0)
-        {
-            eeprom[i][0].block = 0;
-            eeprom[i][0].offset = 0;
-            eeprom[i][1].block = 0;
-            eeprom[i][1].offset = 1;
-            eeprom[i][2].block = 1;
-            eeprom[i][2].offset = 0;
-            eeprom[i][3].block = 1;
-            eeprom[i][3].offset = 1;
-        }
-        else if (i == 1)
-        {
-            eeprom[i][0].block = 2;
-            eeprom[i][0].offset = 0;
-            eeprom[i][1].block = 2;
-            eeprom[i][1].offset = 1;
-            eeprom[i][2].block = 3;
-            eeprom[i][2].offset = 0;
-            eeprom[i][3].block = 3;
-            eeprom[i][3].offset = 1;
-        }
-        else if (i == 2)
-        {
-            eeprom[i][0].block = 4;
-            eeprom[i][0].offset = 0;
-            eeprom[i][1].block = 4;
-            eeprom[i][1].offset = 1;
-            eeprom[i][2].block = 5;
-            eeprom[i][2].offset = 0;
-            eeprom[i][3].block = 5;
-            eeprom[i][3].offset = 1;
-        }
-        else
-        {
-            eeprom[i][0].block = 6;
-            eeprom[i][0].offset = 0;
-            eeprom[i][1].block = 6;
-            eeprom[i][1].offset = 1;
-            eeprom[i][2].block = 7;
-            eeprom[i][2].offset = 0;
-            eeprom[i][3].block = 7;
-            eeprom[i][3].offset = 1;
-        }
-    }
+
+    eeprom[0][0].block = 0;
+    eeprom[0][0].offset = 0;
+    eeprom[0][1].block = 0;
+    eeprom[0][1].offset = 1;
+    eeprom[0][2].block = 1;
+    eeprom[0][2].offset = 0;
+    eeprom[0][3].block = 1;
+    eeprom[0][3].offset = 1;
+
+    eeprom[1][0].block = 2;
+    eeprom[1][0].offset = 0;
+    eeprom[1][1].block = 2;
+    eeprom[1][1].offset = 1;
+    eeprom[1][2].block = 3;
+    eeprom[1][2].offset = 0;
+    eeprom[1][3].block = 3;
+    eeprom[1][3].offset = 1;
+
+    eeprom[2][0].block = 4;
+    eeprom[2][0].offset = 0;
+    eeprom[2][1].block = 4;
+    eeprom[2][1].offset = 1;
+    eeprom[2][2].block = 5;
+    eeprom[2][2].offset = 0;
+    eeprom[2][3].block = 5;
+    eeprom[2][3].offset = 1;
+
+    eeprom[3][0].block = 6;
+    eeprom[3][0].offset = 0;
+    eeprom[3][1].block = 6;
+    eeprom[3][1].offset = 1;
+    eeprom[3][2].block = 7;
+    eeprom[3][2].offset = 0;
+    eeprom[3][3].block = 7;
+    eeprom[3][3].offset = 1;
+
 }
 void populaStructLeds()
 {
@@ -343,7 +332,8 @@ void gravaDadosEeprom(int led)
     EEPROM_write(eeprom[led][2].block, eeprom[led][2].offset,
                  leds[led].tempoLigado);
 
-    EEPROM_write(eeprom[led][3].block, eeprom[led][3].offset, leds[led].alterado);
+    EEPROM_write(eeprom[led][3].block, eeprom[led][3].offset,
+                 leds[led].alterado);
 }
 
 void trataMenu()
